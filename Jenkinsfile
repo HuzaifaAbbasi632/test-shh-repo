@@ -10,7 +10,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub_id', variable: 'dockerhubPwd')]) {
                     sh "docker login -u huzaifaabbasi1122 -p ${dockerhubPwd}"
-                    sh "docker push huzaifaabbasi1122/react:image"
+                    sh "docker push huzaifaabbasi1122/newimage:image"
                 }
             }
         }
