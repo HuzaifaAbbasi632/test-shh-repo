@@ -15,12 +15,11 @@ pipeline {
             }
         }
         stage('Run Container') {
-            steps {
                 def dockerrun = 'docker run --name my-app huzaifaabbasi1122/newimage:image'
                 sshagent(['ssh_key']) {
                      sh "ssh -o StrictHostKeyChecking=no root@192.168.136.11 ${dockerrun}"
                 }
-            }
+            
         }
     }
 }
