@@ -14,16 +14,14 @@ pipeline {
                 }
             }
         }
-        /*stage('Deploy to K8s') {
+        stage('Run Container') {
             steps {
-                sh 'chmod +x changeTag.sh'
-                sh "./changeTag.sh ${DOCKER_TAG}"
-                withCredentials([string(credentialsId: 'machine_pass', variable: 'machine_pass')]) {
-                    sh "sshpass -p ${machine_pass} scp -o StrictHostKeyChecking=no node-app-pod.yml root@192.168.136.21:~ "
-                    sh "sshpass -p ${machine_pass} scp -o StrictHostKeyChecking=no services.yml root@192.168.136.21:~ "
-                    sh "sshpass -p ${machine_pass} ssh root@192.168.136.21 kubectl apply -f . "
+                def dockerun = 'docker run --name my-app huzaifaabbasi1122/newimage:image'
+                sshagent(['ssh_key']) {
+                     sh 'ssh -o StrictHostKeyChecking=no root@192.168.136.11 ${dockerrun}'
+                }
                 }
             }
-        }*/
+        }
     }
 }
