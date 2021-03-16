@@ -17,10 +17,13 @@ pipeline {
         stage('Run Container') {
             steps {
                 withCredentials([string(credentialsId: 'machine_pass', variable: 'machine_pass')]) {
-                    sh "sshpass -p ${machine_pass} ssh root@192.168.136.21 << EOF 
-                    ls;
-                    pwd;
-                    EOF"
+                    sh '''
+                        #!/bin/bash
+                        echo "hello world"
+                        sshpass -p ${machine_pass} ssh root@192.168.136.21 << EOF
+                           ls
+                           systemctl status docker
+                    '''
                 }
             }
         }
