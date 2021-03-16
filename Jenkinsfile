@@ -17,7 +17,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 sshagent(['server_key']) {
-                    sh "ssh root@192.168.136.11 'pwd; ls;'"
+                    sh "ssh -o StrictHostKeyChecking=no root@192.168.136.11 'pwd; ls;'"
                 }
             }
         }
