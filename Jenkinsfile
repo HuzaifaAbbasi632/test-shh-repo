@@ -17,7 +17,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 withCredentials([string(credentialsId: 'machine_pass', variable: 'machine_pass')]) {
-                    sh "sshpass -p ${machine_pass} ssh root@192.168.136.21 ls"
+                    sh "sshpass -p ${machine_pass} ssh root@192.168.136.21 << EOF ls; pwd;"
                 }
             }
         }
