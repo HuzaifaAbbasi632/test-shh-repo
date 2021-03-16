@@ -17,9 +17,9 @@ pipeline {
         stage('Run Container') {
             steps {
                 sshagent(['server_key']) {
-                    sh "ssh root@192.168.136.11 << HERE
+                    sh "ssh root@192.168.136.11 << 'HERE
                         date
-                        hostname
+                        hostname'
                     HERE"
                 }
             }
