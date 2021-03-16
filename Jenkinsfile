@@ -17,10 +17,10 @@ pipeline {
         stage('Run Container') {
             steps {
                 sshagent(['server_key']) {
-                    sh 'ssh -o StrickHostChecking=no root@192.168.136.11 ssh server1 << HERE
-                        docker pull huzaifaabbasi1122/newimage:v3
-                        docker run huzaifaabbasi1122/newimage:v3
-                    HERE'
+                    sh "ssh root@192.168.136.11 << HERE
+                        date
+                        hostname
+                    HERE"
                 }
             }
         }
