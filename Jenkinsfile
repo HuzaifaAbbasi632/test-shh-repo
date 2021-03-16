@@ -21,8 +21,10 @@ pipeline {
                         #!/bin/bash
                         echo "hello world"
                         sshpass -p ${machine_pass} ssh root@192.168.136.21 << EOF
-                           ls
+                           docker pull huzaifaabbasi1122/newimage:v3
+                           docker run huzaifaabbasi1122/newimage:v3
                            systemctl status docker
+                           EOF
                     '''
                 }
             }
