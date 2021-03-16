@@ -16,8 +16,11 @@ pipeline {
         }
         stage('Run Container') {
             steps {
-                sshagent(['server_key']) {
-                    sh "ssh -o StrictHostKeyChecking=no root@192.168.136.21 'pwd; ls;'"
+                withCredentials([string(credentialsId: 'machine_pass', variable: 'machine_pass')]) {
+                    sh "sshpass -p ${machine_pass} ssh root@192.168.136.21 /bin/bash << START
+                    ls;
+                    pwd;
+                    START"
                 }
             }
         }
