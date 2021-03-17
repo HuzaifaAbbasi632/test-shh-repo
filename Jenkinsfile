@@ -18,12 +18,11 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'machine_pass', variable: 'machine_pass')]) {
                     sh '''
-                        sshpass -p ${machine_pass} ssh -t -o StrictHostKeyChecking=no root@192.168.136.21 << HERE
+                        sshpass -p ${machine_pass} ssh -t -o StrictHostKeyChecking=no root@192.168.136.21
                         ls
                         pwd
                         whoami
                         echo "hello world"
-                    HERE
                     '''
                 }
             }
