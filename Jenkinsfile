@@ -22,6 +22,7 @@ pipeline {
                         ls
                         pwd
                         whoami
+                        echo heloworld >> /var/tmp/helo.txt
                         echo "hello world"
                     '''
                 }
