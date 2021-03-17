@@ -21,8 +21,7 @@ pipeline {
                         #!/bin/bash
                         echo "hello world"
                         sshpass -p ${machine_pass} ssh root@192.168.136.21
-                           docker pull huzaifaabbasi1122/newimage:v4
-                           docker run huzaifaabbasi1122/newimage:v4
+                           docker run -d -p 8080:3000 --name huzaifa huzaifaabbasi1122/react:e8b6483c37f58a4749f3f3482c8570bfeb49b26e
                            systemctl status docker
                     '''
                 }
