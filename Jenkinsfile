@@ -18,11 +18,12 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'machine_pass', variable: 'machine_pass')]) {
                     sh '''
-                        #!/bin/bash
-                        sshpass -p ${machine_pass} ssh root@192.168.136.21
-                           ls
-                           systemctl stop docker
-                           systemctl status docker
+                        ssh -t -o StrictHostKeyChecking=no root@192.168.136.21 << HERE
+                        ls
+                        pwd
+                        whoami
+                        echo "hello world"
+                    HERE
                     '''
                 }
             }
