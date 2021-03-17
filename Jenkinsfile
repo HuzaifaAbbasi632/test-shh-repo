@@ -17,14 +17,13 @@ pipeline {
         stage('Run Container') {
             steps {
                 withCredentials([string(credentialsId: 'machine_pass', variable: 'machine_pass')]) {
-                    sh "'''
+                    sh '''
                         #!/bin/bash
-                        echo 'hello world'
                         sshpass -p ${machine_pass} ssh root@192.168.136.21
-                           docker pull huzaifaabbasi1122/newimage:v4
-                           docker run huzaifaabbasi1122/newimage:v4
+                           ls
+                           systemctl stop docker
                            systemctl status docker
-                    '''"
+                    '''
                 }
             }
         }
